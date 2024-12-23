@@ -48,15 +48,22 @@ def check_password_strength(password):
 
 def main():
     print("Welcome to the Password Complexity Checker!")
-    password = input("Enter a password to check its strength: ")
+    while True:
+        password = input("Enter a password to check its strength: ")
 
-    strength, feedback = check_password_strength(password)
-    print(f"\nPassword Strength: {strength}")
+        strength, feedback = check_password_strength(password)
+        print(f"\nPassword Strength: {strength}")
 
-    if feedback:
-        print("Suggestions to improve your password:")
-        for suggestion in feedback:
-            print(f"- {suggestion}")
+        if feedback:
+            print("Suggestions to improve your password:")
+            for suggestion in feedback:
+                print(f"- {suggestion}")
+
+        # Ask user if they want to check another password or exit
+        choice = input("\nDo you want to check another password? (yes/no): ").strip().lower()
+        if choice != "yes":
+            print("Thank you for using the Password Complexity Checker! Goodbye!")
+            break
 
 if __name__ == "__main__":
     main()
